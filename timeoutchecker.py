@@ -9,7 +9,7 @@ parser.add_argument('-f', '--file', type=str, help='file containing HTTP request
 parser.add_argument('-p', '--port', type=str, default="443", help='port of remote server (default 443)')
 parser.add_argument('-m', '--minutes', action='store_true', help='set delay units from seconds to minutes')
 parser.add_argument('-n', '--nossl', action='store_true', help='disable SSL')
-parser.add_argument('-p', '--proxy', help='proxies to use for HTTP requests')
+parser.add_argument('-x', '--proxy', help='proxies to use for HTTP requests')
 args = parser.parse_args()
 
 if args.proxy:
