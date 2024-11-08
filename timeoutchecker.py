@@ -59,21 +59,21 @@ with open(args.file, "r") as f:
                 print(f"[+] Sending request #{count}")
                 if args.nossl:
                     try:
-                        r = requests.get(url="http://" + target + ":" + args.port + path, headers=headerValues, proxies=proxies) # default HTTPS unless user specifies
+                        r = requests.get(url="http://" + target + ":" + args.port + path, headers=headerValues, proxies=proxies, verify=False) # default HTTPS unless user specifies
                     except requests.exceptions.ConnectionError:
                         print("[!] Error: host may be down! Exitting...")
                         sys.exit(-1)
                 else:
-                    r = requests.get(url="https://" + target + ":" + args.port + path, headers=headerValues, proxies=proxies) # default HTTPS unless user specifies
+                    r = requests.get(url="https://" + target + ":" + args.port + path, headers=headerValues, proxies=proxies, verify=False) # default HTTPS unless user specifies
                 time.sleep(delay)
         elif method == "POST":
             while True:
                 count += 1
                 print(f"[+] Sending request #{count}")
                 if args.nossl:
-                    r = requests.post(url="http://" + target + ":" + args.port + path, headers=headerValues, data=dataValues, proxies=proxies) # default HTTPS unless user specifies
+                    r = requests.post(url="http://" + target + ":" + args.port + path, headers=headerValues, data=dataValues, proxies=proxies, verify=False) # default HTTPS unless user specifies
                 else:
-                    r = requests.post(url="https://" + target + ":" + args.port + path, headers=headerValues, data=dataValues, proxies=proxies) # default HTTPS unless user specifies
+                    r = requests.post(url="https://" + target + ":" + args.port + path, headers=headerValues, data=dataValues, proxies=proxies, verify=False) # default HTTPS unless user specifies
                 time.sleep(delay)
     except requests.exceptions.ConnectionError:
         print("[!] Error: host may be inaccessible. Exiting...")
